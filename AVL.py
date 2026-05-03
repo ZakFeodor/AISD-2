@@ -168,10 +168,8 @@ if __name__ == "__main__":
         delete_times.append(end_time - start_time)
         delete_ops.append(tree.ops)
 
-    print("=== РЕЗУЛЬТАТЫ ЗАМЕРОВ ===")
-    print(
-        f"Вставка (10000 эл.): Среднее время = {sum(insert_times) / len(insert_times):.8f} сек, Среднее число операций = {sum(insert_ops) / len(insert_ops):.2f}")
-    print(
-        f"Поиск (100 эл.):     Среднее время = {sum(search_times) / len(search_times):.8f} сек, Среднее число операций = {sum(search_ops) / len(search_ops):.2f}")
-    print(
-        f"Удаление (1000 эл.): Среднее время = {sum(delete_times) / len(delete_times):.8f} сек, Среднее число операций = {sum(delete_ops) / len(delete_ops):.2f}")
+    with open('measures.txt', 'w') as f:
+
+        f.write(f'''Вставка (10000 эл): Среднее время = {sum(insert_times) / len(insert_times):.8f} сек, Среднее число операций = {sum(insert_ops) / len(insert_ops):.2f}\n
+        Поиск (100 эл):     Среднее время = {sum(search_times) / len(search_times):.8f} сек, Среднее число операций = {sum(search_ops) / len(search_ops):.2f}\n
+        Удаление (1000 эл): Среднее время = {sum(delete_times) / len(delete_times):.8f} сек, Среднее число операций = {sum(delete_ops) / len(delete_ops):.2f}''')
